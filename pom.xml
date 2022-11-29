@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                            http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.rubensgomes.pom.springboot</groupId>
+        <artifactId>springboot-app-pom</artifactId>
+        <version>1.4</version>
+    </parent>
+
+    <groupId>com.rubensgomes.graphql</groupId>
+    <artifactId>graphql-ms</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <mainClass>com.rubensgomes.graphql.GraphQLApplication</mainClass>
+
+        <!-- delimiter that doesn't clash with Spring ${} placeholders -->
+        <resource.delimiter>@</resource.delimiter>
+    </properties>
+
+    <dependencies>
+        <!-- =============== scope: compile ================================ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-graphql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Used for validator annotations -->
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Used for utility coding -->
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <!-- OpenAPI Annotations and render Swaggre-UI page -->
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- ===============================================================
+            ATTENTION:
+ 
+            Keep following plugins commented out.  Do NOT run plugins with CI/CD
+            as it conflicts with Jacoco testing coverage and breaks the build.
+
+            * Uncomment and run below plugins when the REST API changes
+            * Run plugins locally only: "mvn clean verify"
+            * Copy target/${project.artifactId}-openapi.json to src/main/resources
+            =================================================================-->
+            <plugin>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>net.revelc.code.formatter</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
